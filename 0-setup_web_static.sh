@@ -24,7 +24,8 @@ printf %s "server {
     index  index.html index.htm;
 
     location /hbnb_static {
-        alias /data/web_static/current/index.html;
+        alias /data/web_static/current/;
+	index index.html
     }
 
     location /redirect_me {

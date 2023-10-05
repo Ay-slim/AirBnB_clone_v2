@@ -12,8 +12,6 @@ sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu /data/
 chgrp -R ubuntu /data/
 
-sudo sed -i "/include \/etc\/nginx\/sites-enabled\/\*;/a \ \ \ \tadd_header X-Served-By \"$HOSTNAME\";" /etc/nginx/nginx.conf
-
 printf %s "server {
     listen 80 default_server;
     listen [::]:80 default_server;

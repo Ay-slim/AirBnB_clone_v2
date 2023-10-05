@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-# Deploy the webstatic archive to nginx web servers
+"""
+Deploy the webstatic archive to nginx web servers
+"""
 from fabric.api import env, put, run
 import os.path
 

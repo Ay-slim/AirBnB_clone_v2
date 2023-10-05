@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # A script to prepare the web servers for airbnb deployment
 sudo apt-get update
 sudo apt-get install -y nginx

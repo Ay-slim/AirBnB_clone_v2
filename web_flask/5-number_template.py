@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Hello Flask route declaration module second endpoint"""
 
-from flask import Flask, abort, render_template
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -31,28 +31,16 @@ def python_arg_hbnb(text="is cool"):
     return "Python {}".format(text.replace('_', ' '))
 
 
-@app.route("/number/<n>", strict_slashes=False)
+@app.route("/number/<int:n>", strict_slashes=False)
 def int_arg_hbnb(n):
     """/number/<n> route definition"""
-    try:
-        if isinstance(int(n), int):
-            return "{} is a number".format(n)
-        abort(404)
-    except ValueError:
-        pass
-    abort(404)
+    return "{} is a number".format(n)
 
 
-@app.route("/number_template/<n>", strict_slashes=False)
+@app.route("/number_template/<int:n>", strict_slashes=False)
 def int_tmpl_arg_hbnb(n):
     """/number_template/<n> route definition"""
-    try:
-        if isinstance(int(n), int):
-            return render_template('5-number.html', n=n)
-        abort(404)
-    except ValueError:
-        pass
-    abort(404)
+    return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':

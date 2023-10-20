@@ -11,8 +11,12 @@ app = Flask(__name__)
 @app.route("/states_list", strict_slashes=False)
 def fetch_states():
     """Fetch states function definition"""
+    states_list = []
     all_states = storage.all(State)
-    return render_template('7-states_list.html', a_s=all_states)
+    for st in all_states:
+        states_list.append(all_states[st])
+    a_s = sorted(states_list, key=lambda x: x.name)
+    return render_template('7-states_list.html', a_s=a_s)
 
 
 @app.teardown_appcontext

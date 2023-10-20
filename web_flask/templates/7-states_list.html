@@ -8,8 +8,7 @@
 		<UL>
 			{% for state in a_s %}
 				<LI>
-					{% set st = a_s[state]  %}
-					State: {{ st.id }}: <B>{{ st.name }}</B>
+					State: {{ state.id }}: <B>{{ state.name }}</B>
 				</LI>
 			{% endfor %}
 		</UL>

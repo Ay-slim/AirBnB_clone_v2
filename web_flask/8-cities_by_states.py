@@ -23,20 +23,14 @@ def fetch_states():
                 tmp = {}
                 tmp['name'] = all_cities[ct].name
                 tmp['id'] = all_cities[ct].id
-                print(tmp, 'TMPPP')
                 ct_list.append(tmp)
         a_s_d = all_states[st].__dict__
         a_s_d['name'] = all_states[st].name
         a_s_d['id'] = all_states[st].id
-        #print(ct_list, 'CT_LIST')
-        #a_s_d['cts'] = ct_list
-        #a_s_d['cts'] = sorted(ct_list, key=lambda x: x['name'])
         sorted_cts = sorted(ct_list, key=lambda x: x['name'])
         a_s_d['cts'] = sorted_cts
         states_list.append(a_s_d)
     a_s = sorted(states_list, key=lambda x: x['name'])
-    #a_s = states_list
-    print(a_s)
     return render_template('8-cities_by_states.html', a_s=a_s)
 
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<TITLE>HBNB</TITLE>
+	</HEAD>
+	<BODY>
+		{% if a_s.flag %}
+			<H1>States</H1>
+			<UL>
+				<LI>
+					State: {{ a_s.id }}: <B>{{ a_s.name }}</B>
+					<UL>
+						{% for ct in a_s.cts %}
+							<LI>
+								{{ ct.id }}: <B>{{ ct.name }}</B>
+							</LI>
+						{% endfor %}
+					</UL>
+				</LI>
+			</UL>
+		{% else %}
+			<H1>Not found!</H1>
+		{% endif %}
+	</BODY>
+</HTML>

@@ -1,23 +1,25 @@
 #!/usr/bin/python3
-"""Module containing hbnb filter route"""
+"""Module containing hbnb route"""
 
 from flask import Flask, render_template
 from models import storage
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
+from models.place import Place
 
 app = Flask(__name__)
 
 
-@app.route("/hbnb_filters", strict_slashes=False)
+@app.route("/hbnb", strict_slashes=False)
 def fetch_states():
-    """Hbnb filter function"""
+    """Hbnb route function"""
     states_list = []
     a_s = {}
     all_states = storage.all(State)
     all_cities = storage.all(City)
     all_amenities = storage.all(Amenity)
+    all_places = storage.all(Place)
     for st in all_states:
         a_s_d = {}
         ct_list = []
@@ -34,9 +36,14 @@ def fetch_states():
     am_s = []
     for am in all_amenities:
         am_s.append(all_amenities[am].name)
+    p_s = []
+    for pl in all_places:
+        p_s.append(all_places[pl])
+    sorted_places = sorted(p_s, key=lambda x: x['name'])
     sorted_amenities = am_s.sort()
     a_s['states'] = sorted_states
     a_s['amenities'] = sorted_amenities
+    a_s['places'] = sorted_places
     return render_template('10-hbnb_filters.html', a_s=a_s)
 
 
